@@ -35,3 +35,18 @@ def create_withdrawal(request):
     except Exception:
         # táctica de Fallar con gracia
         return HttpResponseBadRequest("No se pudo procesar la solicitud; sistema en recuperación")
+
+
+def list_withdrawals(request):
+    """Return all created withdrawals as JSON.
+
+    Very simple: only responds to GET and returns a list of withdrawals
+    including product SKU, quantity, motive and creation timestamp.
+    """
+    if request.method != 'GET':
+        return HttpResponseBadRequest("Only GET allowed")
+    # Use the ORM to avoid raw SQL and keep this simple and safe
+    data = list(Withdrawal.objects.select_related('product').values(
+        'id', 'product__sku', 'quantity', 'motive', 'created_at'
+    ))
+    return JsonResponse({"results": data})

@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'provesi_db',
 	'USER': 'provesi_user',
 	'PASSWORD': 'sirve123',
-	'HOST': '54.167.71.149',
+	'HOST': '52.87.225.149',
 	'PORT': '5432',
     }
 }

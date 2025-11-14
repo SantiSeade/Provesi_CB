@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from bodegaje.views import health_check, product_locations, create_withdrawal
+from bodegaje.views import (
+    health_check,
+    product_locations,
+    create_withdrawal,
+    list_withdrawals,
+)
 
 
 urlpatterns = [
@@ -24,4 +29,5 @@ urlpatterns = [
     path('health-check/', health_check),
     path('product-locations/', product_locations),
     path('withdrawals/', create_withdrawal),
+    path('withdrawals/all/', list_withdrawals),
 ]
